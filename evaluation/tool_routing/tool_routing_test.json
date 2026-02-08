@@ -1,0 +1,365 @@
+{
+    "category_name": "Tool Routing Accuracy",
+    "test_cases": [
+        {
+            "id": "T-01",
+            "input": "How much does Paracetamol 500 cost?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_base_info"
+            ]
+        },
+        {
+            "id": "T-02",
+            "input": "For Ibuprofen, is it in stock and what are the side effects?",
+            "no_tools": 2,
+            "expected_tools": [
+                "get_med_stock_info",
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-03",
+            "input": "Tell me everything about Aspirin: price, usage, and if it's in stock.",
+            "no_tools": 3,
+            "expected_tools": [
+                "get_med_base_info",
+                "get_med_stock_info",
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-04",
+            "input": "What is the active ingredient in Voltaren?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-05",
+            "input": "What are the side effects for Amoxicillin and is it in stock?",
+            "no_tools": 2,
+            "expected_tools": [
+                "get_med_safety_info",
+                "get_med_stock_info"
+            ]
+        },
+        {
+            "id": "T-06",
+            "input": "What are the active ingredients of Novaminsulfon?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-07",
+            "input": "What is the pack size of Vomex?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_base_info"
+            ]
+        },
+        {
+            "id": "T-08",
+            "input": "Is Thomapyrin in stock?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_stock_info"
+            ]
+        },
+        {
+            "id": "T-09",
+            "input": "What are the active ingredients of Nasenspray? How much is it?",
+            "no_tools": 2,
+            "expected_tools": [
+                "get_med_safety_info",
+                "get_med_base_info"
+            ]
+        },
+        {
+            "id": "T-10",
+            "input": "Is there an age restriction for Pantoprazol? Are there any contradictions?",
+            "no_tools": 2,
+            "expected_tools": [
+                "get_med_regulatory_info",
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-11",
+            "input": "Do you have Ramipril? What is the active ingredient? Is there an age restriction?",
+            "no_tools": 3,
+            "expected_tools": [
+                "get_med_stock_info",
+                "get_med_safety_info",
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-12",
+            "input": "Who is the manufacturer of Bepanthen and what is the package size?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_base_info"
+            ]
+        },
+        {
+            "id": "T-13",
+            "input": "Is the Bepanthen currently in stock and where can I find it on the shelves?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_stock_info"
+            ]
+        },
+        {
+            "id": "T-14",
+            "input": "How much does Bepanthen cost and do I need a prescription from a doctor for it?",
+            "no_tools": 2,
+            "expected_tools": [
+                "get_med_base_info",
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-15",
+            "input": "What are the active ingredients in Bepanthen and how much is it?",
+            "no_tools": 2,
+            "expected_tools": [
+                "get_med_base_info",
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-16",
+            "input": "Please answer the questions for Bepanthen. I want to know brand name, current stock level, if it requires a prescription, and any safety warnings.",
+            "no_tools": 4,
+            "expected_tools": [
+                "get_med_base_info",
+                "get_med_stock_info",
+                "get_med_regulatory_info",
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-17",
+            "input": "What is the current price of Ibuprofen?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_stock_info"
+            ]
+        },
+        {
+            "id": "T-18",
+            "input": "Is Ibuprofen available right now and can I buy it without a prescription?",
+            "no_tools": 2,
+            "expected_tools": [
+                "get_med_stock_info",
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-19",
+            "input": "What are the common side effects of Ibuprofen and what is the dosage for adults?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-20",
+            "input": "Give me the following information about Ibuprofen: brand, current quantity, prescription status, and side effects.",
+            "no_tools": 4,
+            "expected_tools": [
+                "get_med_base_info",
+                "get_med_stock_info",
+                "get_med_regulatory_info",
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-21",
+            "input": "What does Ibuprofen it cost, do I need a prescription, and what are the usage instructions?",
+            "no_tools": 3,
+            "expected_tools": [
+                "get_med_base_info",
+                "get_med_regulatory_info",
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-22",
+            "input": "Who is the manufacturer of Amoxicillin and what is the pack size?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_base_info"
+            ]
+        },
+        {
+            "id": "T-23",
+            "input": "How much does Amoxicillin cost and do I need a prescription to buy it?",
+            "no_tools": 2,
+            "expected_tools": [
+                "get_med_base_info",
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-24",
+            "input": "Is Amoxicillin in stock, what are the side effects, and what is the form?",
+            "no_tools": 3,
+            "expected_tools": [
+                "get_med_stock_info",
+                "get_med_safety_info",
+                "get_med_base_info"
+            ]
+        },
+        {
+            "id": "T-25",
+            "input": "Provide all details for Amoxicillin: price, availability, brand name, prescription status, and dosage instructions.",
+            "no_tools": 4,
+            "expected_tools": [
+                "get_med_stock_info",
+                "get_med_base_info",
+                "get_med_regulatory_info",
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-26",
+            "input": "What brand is Pantoprazol from?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_base_info"
+            ]
+        },
+        {
+            "id": "T-27",
+            "input": "Are there any age restrictions for Pantoprazol and what is the form?",
+            "no_tools": 2,
+            "expected_tools": [
+                "get_med_base_info",
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-28",
+            "input": "How much does Pantoprazol cost and is it in stock?",
+            "no_tools": 2,
+            "expected_tools": [
+                "get_med_base_info",
+                "get_med_stock_info"
+            ]
+        },
+        {
+            "id": "T-29",
+            "input": "What is the active ingredient in Pantoprazol, what is the price, and can I buy it without a prescription?",
+            "no_tools": 3,
+            "expected_tools": [
+                "get_med_base_info",
+                "get_med_safety_info",
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-30",
+            "input": "I need the following info on Pantoprazol: brand, stock quantity, age limits, and common side effects.",
+            "no_tools": 4,
+            "expected_tools": [
+                "get_med_base_info",
+                "get_med_stock_info",
+                "get_med_regulatory_info",
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-31",
+            "input": "Tell me about the age rectriction of Cetirizin.",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-32",
+            "input": "How many boxes of Cetirizin are left in stock and is there an age restriction?",
+            "no_tools": 2,
+            "expected_tools": [
+                "get_med_stock_info",
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-34",
+            "input": "Is Cetirizin in stock, is it with prescreption, and what is the application area?",
+            "no_tools": 3,
+            "expected_tools": [
+                "get_med_stock_info",
+                "get_med_regulatory_info",
+                "get_med_safety_info"
+            ]
+        },
+        {
+            "id": "T-35",
+            "input": "Do you have Thomapyrin in stock right now?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_stock_info"
+            ]
+        },
+        {
+            "id": "T-36",
+            "input": "Is Thomapyrin a narcotic?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-37",
+            "input": "Has Thomapyrin an age restriction?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-38",
+            "input": "Do I need a prescription for Thomapyrin? Are there any side effects?",
+            "no_tools": 2,
+            "expected_tools": [
+                "get_med_safety_info",
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-39",
+            "input": "I need to know the price of Ramipril, whether it is in stock and if it requires a prescription.",
+            "no_tools": 3,
+            "expected_tools": [
+                "get_med_stock_info",
+                "get_med_base_info",
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-40",
+            "input": "For Vomex, are there any contraindications, is it a narcotic, and how many units do you have in stock?",
+            "no_tools": 3,
+            "expected_tools": [
+                "get_med_stock_info",
+                "get_med_safety_info",
+                "get_med_regulatory_info"
+            ]
+        },
+        {
+            "id": "T-41",
+            "input": "Is Paracetamol currently in stock?",
+            "no_tools": 1,
+            "expected_tools": [
+                "get_med_stock_info"
+            ]
+        }
+    ]
+}

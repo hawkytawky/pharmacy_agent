@@ -1,0 +1,11 @@
+supabase
+openai
+streamlit
+ipykernel
+langgraph
+langchain
+langchain-openai
+langchain-ollama
+python-dotenv
+tqdm
+plotly

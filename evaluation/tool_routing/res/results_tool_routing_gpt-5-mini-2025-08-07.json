@@ -1,0 +1,651 @@
+{
+  "meta": {
+    "eval_type": "tool_routing",
+    "agent_model": "gpt-5-mini-2025-08-07",
+    "total_cases": 40,
+    "passed": 39,
+    "pass_rate": "97.5%"
+  },
+  "results": [
+    {
+      "test_id": "T-01",
+      "user_input": "How much does Paracetamol 500 cost?",
+      "agent_response": "Paracetamol-ratiopharm 500 mg (pack of 20 tablets) costs 2.95 €.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-02",
+      "user_input": "For Ibuprofen, is it in stock and what are the side effects?",
+      "agent_response": "I couldn't find a product with the name \"Ibuprofen\" in our system. Because of that I can't check stock levels or retrieve the package‑insert side‑effect information. If you provide a specific product name or strength (for example \"Ibuprofen 400 mg tablets\" or a brand name), I can check availability and the product's safety information.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-03",
+      "user_input": "Tell me everything about Aspirin: price, usage, and if it's in stock.",
+      "agent_response": "Here’s what I found for Aspirin (product listed as \"Aspirin Complex\"):\n\n- Product: Aspirin Complex (granules)\n- Price: 9.99 EUR per pack (10 sachets)\n- Usage / Administration: Dissolve the granules in water and drink. Adults: 1–2 sachets every 4–8 hours; maximum 6 sachets per day.\n- Stock: Out of stock — 0 units available.\n\nIf you need a different Aspirin product (e.g., tablets or a specific strength), tell me the exact product name and I can check that.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-04",
+      "user_input": "What is the active ingredient in Voltaren?",
+      "agent_response": "The active ingredient in Voltaren is diclofenac — a nonsteroidal anti-inflammatory drug (NSAID).",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-05",
+      "user_input": "What are the side effects for Amoxicillin and is it in stock?",
+      "agent_response": "From the package insert for Amoxicillin (Amoxicillin-ratiopharm 1000 mg):\n\n- Side effects (common): skin rash and gastrointestinal complaints (e.g., nausea, diarrhea).  \n- Contraindication noted: known hypersensitivity to penicillins.\n\nStock status:\n- We have this product in stock but at low levels — 3 units available.\n\nIf you need more detailed safety information or have concerns about side effects, please consult our pharmacist.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-06",
+      "user_input": "What are the active ingredients of Novaminsulfon?",
+      "agent_response": "The active ingredient in Novaminsulfon is metamizole sodium (Metamizol‑Natrium), also known as dipyrone.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-07",
+      "user_input": "What is the pack size of Vomex?",
+      "agent_response": "Vomex A (dragees) is sold in packs of 20 dragees.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-08",
+      "user_input": "Is Thomapyrin in stock?",
+      "agent_response": "Thomapyrin INTENSIV is currently out of stock (0 units available).",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_stock_info"
+      ],
+      "actual_tools": [
+        "get_med_stock_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-09",
+      "user_input": "What are the active ingredients of Nasenspray? How much is it?",
+      "agent_response": "For Nasenspray ratiopharm Erwachsene:\n- Active ingredient: xylometazoline.\n- Price: €4.20 per 15 ml pack.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-10",
+      "user_input": "Is there an age restriction for Pantoprazol? Are there any contradictions?",
+      "agent_response": "For Pantoprazol (Pantoprazol-ratiopharm 20 mg) — age restriction: 18 years and older. Prescription required: no. Contraindications listed: pregnancy and breastfeeding.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_regulatory_info",
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_regulatory_info",
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-11",
+      "user_input": "Do you have Ramipril? What is the active ingredient? Is there an age restriction?",
+      "agent_response": "Yes.\n\n- Availability: We have Ramipril-1A Pharma 5 mg in stock — 60 units available.\n- Active ingredient: Ramipril.\n- Age restriction: None listed (suitable from 0 years).",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_regulatory_info",
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_regulatory_info",
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-12",
+      "user_input": "Who is the manufacturer of Bepanthen and what is the package size?",
+      "agent_response": "Bepanthen (Wound & Healing ointment) is manufactured by Bayer. The usual pack size is 50 g.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-13",
+      "user_input": "Is the Bepanthen currently in stock and where can I find it on the shelves?",
+      "agent_response": "Yes. Bepanthen Wund‑ und Heilsalbe is in stock — 45 units available. I cannot disclose internal shelf location codes; please ask a staff member at the counter and they will show you the exact shelf.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_stock_info"
+      ],
+      "actual_tools": [
+        "get_med_stock_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-14",
+      "user_input": "How much does Bepanthen cost and do I need a prescription from a doctor for it?",
+      "agent_response": "Bepanthen (Bepanthen Wund- und Heilsalbe) — €8.50 per 50 g pack. No prescription is required (available over the counter).",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_regulatory_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-15",
+      "user_input": "What are the active ingredients in Bepanthen and how much is it?",
+      "agent_response": "Bepanthen (Bepanthen Wund- und Heilsalbe) contains the active ingredient dexpanthenol. The price is 8.50 € for a 50 g tube.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-16",
+      "user_input": "Please answer the questions for Bepanthen. I want to know brand name, current stock level, if it requires a prescription, and any safety warnings.",
+      "agent_response": "Here’s the information for Bepanthen:\n\n- Brand name: Bayer  \n- Current stock level: In stock — 45 units available  \n- Prescription required: No (OTC)  \n- Safety warnings (from the package information):  \n  - Active ingredient: dexpanthenol.  \n  - Very rare: allergic skin reactions.  \n  - Contraindication: hypersensitivity (allergy) to dexpanthenol.\n\nIf you need additional details (e.g., full package insert text or administration instructions), tell me which item and I can fetch that.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_safety_info",
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_safety_info",
+        "get_med_regulatory_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-17",
+      "user_input": "What is the current price of Ibuprofen?",
+      "agent_response": "I couldn't find a product with that name in our system.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_stock_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-18",
+      "user_input": "Is Ibuprofen available right now and can I buy it without a prescription?",
+      "agent_response": "I couldn't find a product named \"Ibuprofen\" in our system. Because of that I cannot confirm current availability or whether a prescription is required. Please consult our pharmacist for assistance, or provide the exact product name/strength (for example \"Ibuprofen 400\") and I will check those details.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_regulatory_info",
+        "get_med_stock_info"
+      ],
+      "actual_tools": [
+        "get_med_regulatory_info",
+        "get_med_stock_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-19",
+      "user_input": "What are the common side effects of Ibuprofen and what is the dosage for adults?",
+      "agent_response": "I’m sorry, but I cannot provide medical advice about side effects or dosing. Please consult our pharmacist or your healthcare provider for that information. If you have a specific ibuprofen product name, I can check stock and price for that product.",
+      "is_passed": false,
+      "expected_tools": [
+        "get_med_safety_info"
+      ],
+      "actual_tools": [],
+      "missing_tools": [
+        "get_med_safety_info"
+      ],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-20",
+      "user_input": "Give me the following information about Ibuprofen: brand, current quantity, prescription status, and side effects.",
+      "agent_response": "I couldn't find a product with that name in our system. If you provide a specific brand name or exact formulation (e.g., Ibuprofen 200 mg tablet, Ibuprofen 400 mg), I can check brand, current quantity, prescription status, and side-effect information for that product.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_safety_info",
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_safety_info",
+        "get_med_regulatory_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-21",
+      "user_input": "What does Ibuprofen it cost, do I need a prescription, and what are the usage instructions?",
+      "agent_response": "I couldn't find a product with that name in our system. Please consult our pharmacist for the current price, whether a prescription is required, and the official usage instructions. If you have a specific product name (including strength or brand), I can check stock, price and the manufacturer's administration instructions for you.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_safety_info",
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_safety_info",
+        "get_med_regulatory_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-22",
+      "user_input": "Who is the manufacturer of Amoxicillin and what is the pack size?",
+      "agent_response": "The Amoxicillin product listed (Amoxicillin‑ratiopharm 1000 mg) is manufactured by Ratiopharm. The pack size is 10 tablets.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-23",
+      "user_input": "How much does Amoxicillin cost and do I need a prescription to buy it?",
+      "agent_response": "Amoxicillin (Amoxicillin-ratiopharm 1000 mg, pack of 10 film-coated tablets) costs €14.50 per pack. A prescription is required to purchase it.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_regulatory_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-24",
+      "user_input": "Is Amoxicillin in stock, what are the side effects, and what is the form?",
+      "agent_response": "Yes.\n\n- Stock: Amoxicillin-ratiopharm 1000 mg — low stock (3 units available).\n- Form: film-coated tablets.\n- Side effects (manufacturer/package insert): common — skin rash and gastrointestinal complaints (e.g., nausea, diarrhea).\n\nIf you need more detailed safety or prescription information, please consult our pharmacist.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-25",
+      "user_input": "Provide all details for Amoxicillin: price, availability, brand name, prescription status, and dosage instructions.",
+      "agent_response": "Here are the available details for Amoxicillin-ratiopharm 1000 mg:\n\n- Brand: Ratiopharm  \n- Active ingredient: Amoxicillin  \n- Price & pack size: 14.50 EUR per pack (10 tablets)  \n- Availability: Low stock — 3 units available  \n- Prescription status: Prescription required  \n- Dosage/administration (manufacturer): Take strictly according to your doctor’s instructions. Swallow the tablet whole with a drink during meals.\n\nIf you need only price, only availability, or any other single item again, tell me which one and I’ll repeat just that.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_safety_info",
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_safety_info",
+        "get_med_regulatory_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-26",
+      "user_input": "What brand is Pantoprazol from?",
+      "agent_response": "Pantoprazol is sold under the brand Ratiopharm (e.g., Pantoprazol-ratiopharm 20 mg).",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-27",
+      "user_input": "Are there any age restrictions for Pantoprazol and what is the form?",
+      "agent_response": "For Pantoprazol (Pantoprazol-ratiopharm 20 mg) in our system:\n- Age restriction: 18 years and older.\n- Form: enteric-coated (gastro-resistant) tablets (magensaftresistente Tabletten).",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_regulatory_info",
+        "get_med_base_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-28",
+      "user_input": "How much does Pantoprazol cost and is it in stock?",
+      "agent_response": "Pantoprazol-ratiopharm 20 mg (14 tablets per pack) costs 6.95 € per pack. It is in stock — 80 packs available.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_stock_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_stock_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-29",
+      "user_input": "What is the active ingredient in Pantoprazol, what is the price, and can I buy it without a prescription?",
+      "agent_response": "Active ingredient: pantoprazole.\n\nPrice: €6.95 per pack (14 tablets).\n\nPrescription: No prescription required — it is available OTC, but sale is restricted to adults (18+).",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_safety_info",
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_safety_info",
+        "get_med_regulatory_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-30",
+      "user_input": "I need the following info on Pantoprazol: brand, stock quantity, age limits, and common side effects.",
+      "agent_response": "I found one product: Pantoprazol-ratiopharm 20 mg. Here are the requested facts:\n\n- Brand: Ratiopharm  \n- Stock quantity: 80 units available  \n- Age limit: 18 years and older  \n- Common side effects (from the package information): occasionally headache and dizziness\n\nIf you need any other non-medical details (price, pack size, or prescription status), tell me which one and I’ll check it.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_safety_info",
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_safety_info",
+        "get_med_regulatory_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-31",
+      "user_input": "Tell me about the age rectriction of Cetirizin.",
+      "agent_response": "For cetirizine the age restriction is 6 years — it is intended for children aged 6 and older. It is not a narcotic and does not require a prescription.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_regulatory_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-32",
+      "user_input": "How many boxes of Cetirizin are left in stock and is there an age restriction?",
+      "agent_response": "We have 25 boxes of Cetirizin in stock. The age restriction is 6 years (suitable for ages 6 and older).",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_regulatory_info",
+        "get_med_stock_info"
+      ],
+      "actual_tools": [
+        "get_med_regulatory_info",
+        "get_med_stock_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-34",
+      "user_input": "Is Cetirizin in stock, is it with prescreption, and what is the application area?",
+      "agent_response": "Yes. Cetirizin is in stock — 25 units available.  \nNo prescription is required (available OTC); suitable from 6 years of age.  \nApplication area: indicated for hay fever (allergic rhinitis) and urticaria (hives).",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_regulatory_info",
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_regulatory_info",
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-35",
+      "user_input": "Do you have Thomapyrin in stock right now?",
+      "agent_response": "Thomapyrin INTENSIV is currently out of stock — 0 units available.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_stock_info"
+      ],
+      "actual_tools": [
+        "get_med_stock_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-36",
+      "user_input": "Is Thomapyrin a narcotic?",
+      "agent_response": "No — Thomapyrin is not a narcotic. It is available without a prescription and is intended for use from age 12 and up.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_regulatory_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-37",
+      "user_input": "Has Thomapyrin an age restriction?",
+      "agent_response": "Yes. Thomapyrin (Thomapyrin INTENSIV) has an age restriction: it is for ages 12 years and older. It does not require a prescription.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_regulatory_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-38",
+      "user_input": "Do I need a prescription for Thomapyrin? Are there any side effects?",
+      "agent_response": "Thomapyrin does not require a prescription. According to the manufacturer’s package information, common side effects include stomach complaints and nervousness (likely from the caffeine); for a complete list of possible side effects and contraindications, please check the package leaflet or consult your pharmacist or physician.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_regulatory_info",
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_regulatory_info",
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-39",
+      "user_input": "I need to know the price of Ramipril, whether it is in stock and if it requires a prescription.",
+      "agent_response": "Ramipril (1A Pharma) 5 mg — Price: €14.80 per pack (100 tablets).  \nStock: In stock — 60 packs available.  \nPrescription: Yes, a prescription is required.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_regulatory_info"
+      ],
+      "actual_tools": [
+        "get_med_base_info",
+        "get_med_stock_info",
+        "get_med_regulatory_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-40",
+      "user_input": "For Vomex, are there any contraindications, is it a narcotic, and how many units do you have in stock?",
+      "agent_response": "Vomex A Dragees — Contraindications: glaucoma and acute asthmatic attacks. It is not a narcotic. Stock: 10 units available (low stock).",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_regulatory_info",
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "actual_tools": [
+        "get_med_regulatory_info",
+        "get_med_stock_info",
+        "get_med_safety_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    },
+    {
+      "test_id": "T-41",
+      "user_input": "Is Paracetamol currently in stock?",
+      "agent_response": "Yes — Paracetamol-ratiopharm 500 mg is in stock. 300 units are available.",
+      "is_passed": true,
+      "expected_tools": [
+        "get_med_stock_info"
+      ],
+      "actual_tools": [
+        "get_med_stock_info"
+      ],
+      "missing_tools": [],
+      "unexpected_tools": []
+    }
+  ]
+}
