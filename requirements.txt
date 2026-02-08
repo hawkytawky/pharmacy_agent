@@ -9,3 +9,6 @@ langchain-ollama
 python-dotenv
 tqdm
 plotly
+
+# llm
+torch

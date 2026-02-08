@@ -120,9 +120,9 @@ st.write(
 )
 
 st.markdown("""
-* **🧠 Memory Management:** Current state is stored in-memory only (lost on restart) and grows linearly without pruning, relying solely on the models large context window (for `gpt-5-mini` 400k context window).
+* **🧠 Memory Management:** Current state is stored in-memory only and grows linearly without pruning, relying solely on the models large context window (for `gpt-5-mini` 400k context window).
 * **🛡️ Missing Guardrails:** No dedicated input/output filters are implemented to strictly prevent jailbreaks or block out-of-domain queries beyond basic prompt instructions.
-* **📉 Basic Error Handling:** Tools currently return empty lists on failure without retry logic like exponential backoff, lacking graceful degradation for API outages.
+* **🏗️ Architecture:** The agent logic is currently embedded directly within the Streamlit frontend. For a production system, this should be decoupled into a dedicated Backend API to improve scalability and security.
 """)
 
 st.divider()
