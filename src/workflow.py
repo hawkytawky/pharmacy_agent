@@ -11,12 +11,12 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, StateGraph
 from langgraph.prebuilt import ToolNode
 
-from config.chat_config import (
+from src.config.chat_config import (
     LLM_MODEL,
     LLM_PROVIDER,
     LLM_TEMPERATURE,
 )
-from config.secrets import get_secret
+from src.config.secrets import get_secret
 from src.prompts import SYSTEM_PROMPT
 from src.schemas import AgentState
 from src.tools import pharmacy_tools

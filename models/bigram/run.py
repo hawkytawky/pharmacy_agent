@@ -29,15 +29,12 @@ def main(input_path: str) -> None:
     Args:
         input_path: Path to the input text file.
     """
-    # Set random seed for reproducibility
     torch.manual_seed(1337)
 
-    # Load text data
     input_file = Path(input_path)
     if not input_file.exists():
         raise FileNotFoundError(f"Input file not found: {input_path}")
 
-    # Extract model name from filename (e.g., goethe.txt -> goethe)
     model_name = input_file.stem
 
     logger.info(f"Loading training data from: {input_path}")
@@ -49,22 +46,17 @@ def main(input_path: str) -> None:
     logger.info(f"Text length: {len(text)} characters")
     logger.info(f"Device: {DEVICE}")
 
-    # Initialize encoder and data loader
     encoder = TextEncoder(text)
     data_loader = DataLoader(text, encoder)
 
-    # Initialize model
     model = BigramLanguageModel(encoder.vocab_size)
     model = model.to(DEVICE)
 
-    # Count parameters
     num_params = sum(p.numel() for p in model.parameters())
     logger.info(f"Model parameters: {num_params:,}")
 
-    # Train the model (saves checkpoint automatically)
     train(model, data_loader, encoder, model_name)
 
-    # Generate sample text
     logger.info("\n--- Generated Text Sample ---")
     generated = generate_text(model, encoder, max_tokens=300)
     print(generated)

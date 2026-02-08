@@ -13,6 +13,19 @@ logger = logging.getLogger(__name__)
 
 TRAINING_DATA_DIR = Path("models/training_data")
 
+MODEL_INSIGHTS = {
+    "goethe": """
+    ⚠️ **Overfitting Alert:** Loss gap of ~0.98 (Train: 2.50 vs Val: 3.48).
+    The model is memorizing the small dataset. The high vocabulary size (91 chars)
+    dilutes the limited data, preventing it from learning general rules.
+    """,
+    "shakespear": """
+    ✅ **Stable Generalization:** Tiny loss gap of -0.007 (Train: 2.57 vs Val: 2.56).
+    The curves track perfectly together. The larger corpus and compact vocabulary (65 chars)
+    allow the model to learn robust character patterns without memorizing.
+    """,
+}
+
 
 def load_training_text(model_name: str, max_chars: int = 300) -> str:
     """Load the first n characters of the training text.
@@ -34,11 +47,12 @@ def load_training_text(model_name: str, max_chars: int = 300) -> str:
     return text + "..." if len(text) == max_chars else text
 
 
-def render_training_info(checkpoint: Dict) -> None:
+def render_training_info(checkpoint: Dict, selected_model: str) -> None:
     """Render training information from checkpoint.
 
     Args:
         checkpoint: Loaded checkpoint dictionary.
+        selected_model: Name of the selected model for insights.
     """
     st.subheader("📊 Training Information")
 
@@ -60,6 +74,10 @@ def render_training_info(checkpoint: Dict) -> None:
     history = checkpoint.get("training_history", {})
     if history and history.get("steps"):
         st.subheader("📉 Training Loss")
+
+    insight = MODEL_INSIGHTS.get(selected_model)
+    if insight:
+        st.info(insight)
 
         fig = go.Figure()
         fig.add_trace(
@@ -88,18 +106,20 @@ def render_training_info(checkpoint: Dict) -> None:
         )
         st.plotly_chart(fig, use_container_width=True)
 
-        # Final loss metrics
-        col1, col2 = st.columns(2)
+        # Final loss metrics with gap indicator
+        train_loss = history["train_loss"][-1]
+        val_loss = history["val_loss"][-1]
+        loss_gap = val_loss - train_loss
+
+        col1, col2, col3 = st.columns(3)
         with col1:
-            st.metric(
-                "Final Train Loss",
-                f"{history['train_loss'][-1]:.4f}",
-            )
+            st.metric("Final Train Loss", f"{train_loss:.4f}")
         with col2:
-            st.metric(
-                "Final Validation Loss",
-                f"{history['val_loss'][-1]:.4f}",
-            )
+            st.metric("Final Validation Loss", f"{val_loss:.4f}")
+        with col3:
+            # Color code the gap
+            gap_status = "🟢" if loss_gap < 0.3 else "🟡" if loss_gap < 0.5 else "🔴"
+            st.metric("Loss Gap", f"{gap_status} {loss_gap:.4f}")
 
 
 def render_bigram_tab() -> None:
@@ -149,12 +169,15 @@ def render_bigram_tab() -> None:
     st.divider()
 
     # Training information
-    render_training_info(checkpoint)
+    render_training_info(checkpoint, selected_model)
 
     st.divider()
 
     # Generation section
     st.subheader("✨ Text Generation")
+    st.info(
+        "Just to clarify, the generated text is not going to be meaningful 😅 The bigram model is very simple and only captures character-level transitions, so the output will be mostly gibberish. But it's the fundament of language models and a fun demonstration of how a language model can generate text based on learned probabilities!"
+    )
 
     col1, col2 = st.columns([3, 1])
     with col1:

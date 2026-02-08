@@ -6,8 +6,8 @@ from typing import List
 from openai import OpenAI
 from supabase import Client, create_client
 
-from config.chat_config import EMBEDDING_MODEL
-from config.secrets import get_secret
+from src.config.chat_config import EMBEDDING_MODEL
+from src.config.secrets import get_secret
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

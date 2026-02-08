@@ -5,8 +5,8 @@ from typing import Dict, List
 
 from langchain_core.tools import tool
 
-from config.chat_config import RETRIEVAL_MATCH_COUNT, RETRIEVAL_MATCH_THRESHOLD
 from src.clients import create_embedding, get_supabase_client
+from src.config.chat_config import RETRIEVAL_MATCH_COUNT, RETRIEVAL_MATCH_THRESHOLD
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

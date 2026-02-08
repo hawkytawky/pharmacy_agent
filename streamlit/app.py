@@ -61,7 +61,7 @@ def main():
     st.caption("""**Note:** This bot will NOT provide medical advice.""")
 
     init_session_state()
-    render_sidebar()
+    render_sidebar(show_clear_chat=True)
     display_chat_history()
 
     if user_input := st.chat_input("Ask about a medication..."):
