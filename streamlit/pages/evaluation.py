@@ -6,7 +6,10 @@ from pathlib import Path
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+from auth import check_password
 from components import hide_default_nav, render_sidebar
+
+check_password()
 
 from evaluation import medical_advice, tool_routing
 

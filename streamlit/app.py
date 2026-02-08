@@ -13,6 +13,7 @@ import streamlit as st
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
+from auth import check_password
 from components import hide_default_nav, render_sidebar
 
 from src.workflow import PharmacyAssistant
@@ -47,6 +48,8 @@ def display_chat_history():
 
 def main():
     """Main function to run the Streamlit app."""
+    check_password()
+
     st.set_page_config(
         page_title="Pharmacy Assistant", page_icon="💊", layout="centered"
     )

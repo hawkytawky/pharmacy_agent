@@ -1,7 +1,6 @@
 """Langgraph workflow definition for the Pharmacy Assistant chatbot."""
 
 import logging
-import os
 from typing import Generator, Literal, Union
 
 from dotenv import load_dotenv
@@ -17,6 +16,7 @@ from config.chat_config import (
     LLM_PROVIDER,
     LLM_TEMPERATURE,
 )
+from config.secrets import get_secret
 from src.prompts import SYSTEM_PROMPT
 from src.schemas import AgentState
 from src.tools import pharmacy_tools
@@ -74,7 +74,7 @@ class PharmacyAssistant:
         elif LLM_PROVIDER == "openai":
             llm = ChatOpenAI(
                 model=self.model,
-                api_key=os.getenv("OPENAI_API_KEY"),
+                api_key=get_secret("OPENAI_API_KEY"),
                 temperature=self.temperature,
             )
         return llm.bind_tools(pharmacy_tools)

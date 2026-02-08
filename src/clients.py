@@ -1,13 +1,13 @@
 """Client configurations for external services (OpenAI, Supabase)."""
 
 import logging
-import os
 from typing import List
 
 from openai import OpenAI
 from supabase import Client, create_client
 
 from config.chat_config import EMBEDDING_MODEL
+from config.secrets import get_secret
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -17,19 +17,16 @@ def get_supabase_client() -> Client:
     """
     Creates and returns a Supabase client instance.
 
+    Loads credentials from Streamlit secrets or environment variables.
+
     Returns:
-        Supabase client configured with environment variables.
+        Supabase client configured with secrets.
 
     Raises:
-        ValueError: If SUPABASE_URL or SUPABASE_KEY is not set.
+        KeyError: If SUPABASE_URL or SUPABASE_KEY is not set.
     """
-    supabase_url = os.getenv("SUPABASE_URL")
-    supabase_key = os.getenv("SUPABASE_KEY")
-
-    if not supabase_url or not supabase_key:
-        raise ValueError(
-            "SUPABASE_URL and SUPABASE_KEY must be set in environment variables"
-        )
+    supabase_url = get_secret("SUPABASE_URL")
+    supabase_key = get_secret("SUPABASE_KEY")
 
     return create_client(supabase_url, supabase_key)
 
@@ -38,6 +35,8 @@ def create_embedding(text: str) -> List[float]:
     """
     Creates an embedding vector for the given text using OpenAI's embedding model.
 
+    Loads API key from Streamlit secrets or environment variables.
+
     Args:
         text: The text to create an embedding for.
 
@@ -45,12 +44,9 @@ def create_embedding(text: str) -> List[float]:
         List of floats representing the embedding vector (1536 dimensions).
 
     Raises:
-        ValueError: If OPENAI_API_KEY is not set.
+        KeyError: If OPENAI_API_KEY is not set.
     """
-    api_key = os.getenv("OPENAI_API_KEY")
-
-    if not api_key:
-        raise ValueError("OPENAI_API_KEY must be set in environment variables")
+    api_key = get_secret("OPENAI_API_KEY")
 
     client = OpenAI(api_key=api_key)
     response = client.embeddings.create(model=EMBEDDING_MODEL, input=text)

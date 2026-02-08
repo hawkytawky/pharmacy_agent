@@ -2,6 +2,8 @@
 
 import uuid
 
+from auth import logout
+
 import streamlit as st
 
 
@@ -37,3 +39,7 @@ def render_sidebar(show_clear_chat: bool = False):
                 st.session_state.messages = []
                 st.session_state.thread_id = str(uuid.uuid4())
                 st.rerun()
+
+        st.divider()
+        if st.button("🚪 Logout", use_container_width=True):
+            logout()
