@@ -6,44 +6,45 @@ from pathlib import Path
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from config.secrets import get_secret
 
 
 def check_password() -> bool:
-    """
-    Checks if the user has entered the correct password.
+    """Gibt True zurück, wenn der Benutzer eingeloggt ist, sonst False."""
 
-    Uses Streamlit session state to track authentication status.
-    Once authenticated, the user stays logged in for the session.
-    Loads the correct password from st.secrets or environment variables.
+    def password_entered():
+        """Prüft das Passwort gegen die Secrets."""
+        if st.session_state["password_input"] == st.secrets["ADMIN_PASSWORD"]:
+            st.session_state["password_correct"] = True
+            del st.session_state["password_input"]  # Sicherheit: Eingabe löschen
+        else:
+            st.session_state["password_correct"] = False
 
-    Returns:
-        True if user is authenticated, False otherwise.
-    """
-    if "authenticated" not in st.session_state:
-        st.session_state.authenticated = False
-
-    if st.session_state.authenticated:
+    # Falls bereits erfolgreich eingeloggt
+    if st.session_state.get("password_correct", False):
         return True
 
-    st.title("🔐 Pharmacy Assistant")
-    st.caption("Please enter the password to access the application.")
-
-    password = st.text_input(
-        "Password",
+    # Login-Formular anzeigen
+    st.title("🔒 Login")
+    st.text_input(
+        "Bitte Passwort für den Zugriff eingeben:",
         type="password",
-        placeholder="Enter password...",
+        on_change=password_entered,
+        key="password_input",
     )
 
-    if st.button("Login", type="primary"):
-        correct_password = get_secret("ADMIN_PASSWORD")
-        if password == correct_password:
-            st.session_state.authenticated = True
-            st.rerun()
-        else:
-            st.error("❌ Incorrect password. Please try again.")
+    if (
+        "password_correct" in st.session_state
+        and not st.session_state["password_correct"]
+    ):
+        st.error("😕 Passwort falsch")
 
-    st.stop()
+    return False
+
+
+def login_barrier():
+    """Stoppt die Ausführung der Seite, wenn der User nicht eingeloggt ist."""
+    if not check_password():
+        st.stop()
 
 
 def logout():

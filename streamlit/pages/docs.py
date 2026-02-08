@@ -6,8 +6,10 @@ from pathlib import Path
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+from auth import login_barrier
 from components import hide_default_nav, render_sidebar
 
+login_barrier()
 st.set_page_config(page_title="Documentation", page_icon="📄", layout="centered")
 hide_default_nav()
 render_sidebar()
@@ -81,7 +83,7 @@ st.markdown("### ⚡ Tech Stack")
 
 st.markdown("""
 * **Database:** **Supabase** (PostgreSQL) hosts inventory and medical records.
-* **Data Source:** Synthetic dataset of **16 representative medications**, generated using **Gemini 3** to ensure clean, structured test data.
+* **Data Source:** Synthetic dataset of **16 representative medications**, generated using **Gemini 3** to ensure clean, structured test data. (📊[Database page](/database).)
 * **Frontend:** Streamlit (Python UI).
 * **Orchestration:** LangChain & LangGraph (Agent Loops).
 * **Observability:** LangSmith (Tracing & Debugging).

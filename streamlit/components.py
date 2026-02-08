@@ -32,6 +32,7 @@ def render_sidebar(show_clear_chat: bool = False):
         st.page_link("pages/evaluation.py", label="Evaluation", icon="📊")
         st.page_link("pages/docs.py", label="Documentation", icon="📄")
         st.page_link("pages/llm.py", label="LLM", icon="🧠")
+        st.page_link("pages/database.py", label="Database", icon="🗄️")
 
         if show_clear_chat:
             st.divider()

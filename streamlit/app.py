@@ -13,11 +13,12 @@ import streamlit as st
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from auth import check_password
+from auth import login_barrier
 from components import hide_default_nav, render_sidebar
 
 from src.workflow import PharmacyAssistant
 
+login_barrier()
 load_dotenv(project_root / ".env")
 
 
@@ -48,8 +49,6 @@ def display_chat_history():
 
 def main():
     """Main function to run the Streamlit app."""
-    check_password()
-
     st.set_page_config(
         page_title="Pharmacy Assistant", page_icon="💊", layout="centered"
     )
@@ -58,7 +57,7 @@ def main():
 
     st.title("💊 Pharmacy Assistant")
     st.caption("""Ask me about medication:
-               🔍 Basics · 📦 Stock · 📋 Prescription · ⚠️ Safety)""")
+               🔍 Basics · 📦 Stock · 📋 Prescription · ⚠️ Safety""")
     st.caption("""**Note:** This bot will NOT provide medical advice.""")
 
     init_session_state()
